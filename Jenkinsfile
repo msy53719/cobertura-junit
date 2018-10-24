@@ -19,15 +19,6 @@ pipeline {
                 sh 'sh ./script/excute_test.sh'
             }
         }
-        
-       stage('modify name') {
-            steps {
-                echo 'modify report name'
-                sh 'pwd'
-                sh  'sh ./script/modify_report_name.sh'
-                sh 'pwd'
-            }
-        }
     }
     post {
    
@@ -37,7 +28,7 @@ pipeline {
               allowMissing: false,
               alwaysLinkToLastBuild: false,
               keepAll: true,
-              reportDir: './target/jmeter/html1/',
+              reportDir: './target/site/cobertura/',
               reportFiles: 'index.html',
               reportName: 'Html Report'
             ]

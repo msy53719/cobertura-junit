@@ -1,1 +1,1 @@
-tar -cvzf test-report.tar.gz ./target/jmeter/html*/
+tar -cvzf test-report.tar.gz ./target/site/cobertura/
