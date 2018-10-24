@@ -19,7 +19,7 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-
+<!--  
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
@@ -34,6 +34,29 @@
 			<scope>test</scope>
 		</dependency>
 
+<dependency>
+    <groupId>commons-collections</groupId>
+    <artifactId>commons-collections</artifactId>
+    <version>3.2.2</version>
+</dependency>
+		
+
+		<dependency>
+			<groupId>net.sourceforge.cobertura</groupId>
+			<artifactId>cobertura</artifactId>
+			<version>2.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		-->
+		
+<!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
+<dependency>
+    <groupId>org.apache.velocity</groupId>
+    <artifactId>velocity</artifactId>
+    <version>1.7</version>
+</dependency>
+
+		
 	</dependencies>
 
 	<build>
@@ -42,15 +65,32 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.7</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>cobertura</goal>
-						</goals>
-					</execution>
-				</executions>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					  <reportSets>
+           <reportSet>
+               <reports>
+                   <report>cobertura</report>
+               </reports>
+           </reportSet>
+       </reportSets>
+					<instrumentation>
+						<excludes>
+							<exclude>com/**/*Test.class</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>Codehaus repository</id>
+			<url>http://repository.codehaus.org/</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>
